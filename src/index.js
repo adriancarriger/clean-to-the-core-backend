@@ -47,10 +47,12 @@ function updateData(updates) {
 }
 
 function prepareUpdates() {
-  updates = [];
-  updates.push({
-    ref: 'test/path',
-    data: 'test data'
+  return new Promise( (resolve, reject) => {
+    var updates = [];
+    updates.push({
+      ref: 'test/path',
+      data: 'test data'
+    });
+    resolve(updates);
   });
-  return updates;
 }
