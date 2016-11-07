@@ -1,0 +1,11 @@
+{
+  "name": "clean-to-the-core-backend",
+  "version": "1.0.0",
+  "description": "A backend repository for [https://github.com/adriancarriger/clean-to-the-core](https://github.com/adriancarriger/clean-to-the-core)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrian Carriger <acarriger@gmail.com> (http://adriancarriger.com)",
+  "license": "MIT"
+}
