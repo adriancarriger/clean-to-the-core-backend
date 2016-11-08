@@ -3,8 +3,11 @@
 let firebase = require("firebase");
 let Promise = require("promise");
 let path = require('path');
+let fs = require('fs');
 
 let config = require("./config.js").config;
+let filePath = path.resolve(__dirname, '../assets/input.json');
+let json = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
 init(false);
 
@@ -48,10 +51,10 @@ function updateData(updates) {
 
 function prepareUpdates() {
   return new Promise( (resolve, reject) => {
-    var updates = [];
+    let updates = [];
     updates.push({
-      ref: 'test/path',
-      data: 'test data'
+      ref: 'client',
+      data: json
     });
     resolve(updates);
   });
