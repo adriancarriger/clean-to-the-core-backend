@@ -53,8 +53,8 @@ function prepareUpdates() {
   return new Promise( (resolve, reject) => {
     let updates = [];
     updates.push({
-      ref: 'client',
-      data: json
+      ref: 'client/recipes',
+      data: json.recipes
     });
     resolve(updates);
   });
