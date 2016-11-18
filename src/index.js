@@ -1,13 +1,14 @@
 'use strict';
 
-let firebase = require("firebase");
-let Promise = require("promise");
+let firebase = require('firebase');
+let Promise = require('promise');
 let path = require('path');
 let fs = require('fs');
 
-let config = require("./config.js").config;
+let config = require('./config.js').config;
 let filePath = path.resolve(__dirname, '../assets/input.json');
 let json = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+let convert = require('./extractTime').convert;
 
 init(false);
 
@@ -15,6 +16,16 @@ auth()
   .then(prepareUpdates)
   .then(updateData)
   .then(process.exit);
+
+// Prepare data for upload to Firebase
+json.recipes = json.recipes.map(recipe => {
+  recipe.items = recipe.items.map(item => {
+    // Exracts time objects from recipe steps (strings => objects)
+    item.stepsObj = convert(item.steps);
+    return item;
+  });
+  return recipe;
+});
 
 
 function init(logging) {
