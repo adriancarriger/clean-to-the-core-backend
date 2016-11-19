@@ -77,8 +77,8 @@ function timeStringObjs(output, minItem) {
         long: long
       };
     }
-  } else if (isNumeric(minutes[0])) {
-    timerObj = { exactly: minutes[0] };
+  } else if (isNumeric(minutes)) {
+    timerObj = { exactly: minutes };
   }
   if (timerObj !== undefined) {
     output.push({
