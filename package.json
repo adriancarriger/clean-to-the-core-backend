@@ -9,6 +9,7 @@
   "author": "Adrian Carriger <acarriger@gmail.com> (http://adriancarriger.com)",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "firebase": "^3.5.3",
     "promise": "^7.1.1"
   }

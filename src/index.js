@@ -1,5 +1,6 @@
 'use strict';
 
+let cheerio = require('cheerio');
 let firebase = require('firebase');
 let Promise = require('promise');
 let path = require('path');
@@ -21,12 +22,21 @@ auth()
 json.recipes = json.recipes.map(recipe => {
   recipe.items = recipe.items.map(item => {
     // Exracts time objects from recipe steps (strings => objects)
-    item.stepsObj = convert(item.steps);
+    let steps = flatten(item.steps);
+    item.stepsObj = steps.map(x => convert(x));
     return item;
   });
   return recipe;
 });
 
+function flatten(steps) {
+  let $ = cheerio.load(steps);
+  let array = [];
+  $('li').each(function(i, elem) {
+    array.push( $(this).html() );
+  });
+  return array;
+}
 
 function init(logging) {
   // Initialize Firebase
