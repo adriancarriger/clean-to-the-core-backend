@@ -19,14 +19,13 @@ auth()
   .then(process.exit);
 
 // Prepare data for upload to Firebase
-json.recipes = json.recipes.map(recipe => {
-  recipe.items = recipe.items.map(item => {
+Object.keys(json.recipes).forEach(slug => {
+  json.recipes[slug].items = json.recipes[slug].items.map(item => {
     // Exracts time objects from recipe steps (strings => objects)
     let steps = flatten(item.steps);
     item.stepsObj = steps.map(x => convert(x));
     return item;
   });
-  return recipe;
 });
 
 function flatten(steps) {
