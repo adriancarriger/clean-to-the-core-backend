@@ -24,6 +24,7 @@ Object.keys(json.recipes).forEach(slug => {
     // Exracts time objects from recipe steps (strings => objects)
     let steps = flatten(item.steps);
     item.stepsObj = steps.map(x => convert(x));
+    item.ingredients = item.ingredients.split('http://').join('https://');
     return item;
   });
 });
