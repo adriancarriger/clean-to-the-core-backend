@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "firebase": "^3.5.3",
+    "firebase": "^3.6.4",
     "promise": "^7.1.1"
   }
 }
