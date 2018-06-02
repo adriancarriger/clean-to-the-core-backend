@@ -32,8 +32,8 @@ Object.keys(json.recipes).forEach(slug => {
 function flatten(steps) {
   let $ = cheerio.load(steps);
   let array = [];
-  $('li').each(function(i, elem) {
-    array.push( $(this).html() );
+  $('li').each(function (i, elem) {
+    array.push($(this).html());
   });
   return array;
 }
@@ -54,11 +54,11 @@ function auth() {
 }
 
 function updateData(updates) {
-  return new Promise( (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let completed = 0;
     for (let i = 0; i < updates.length; i++) {
-      let ref = firebase.database().ref( updates[i].ref );
-      ref.transaction( () => {
+      let ref = firebase.database().ref(updates[i].ref);
+      ref.transaction(() => {
         return updates[i].data;
       }, () => {
         completed++;
@@ -71,7 +71,7 @@ function updateData(updates) {
 }
 
 function prepareUpdates() {
-  return new Promise( (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let updates = [];
     updates.push({
       ref: 'client/recipes',
